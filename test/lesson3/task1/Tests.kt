@@ -111,7 +111,7 @@ class Tests {
         assertEquals(97, minDivisor(97))
         assertEquals(7, minDivisor(49))
         assertEquals(17, minDivisor(8653))
-        assertEquals(2124679 , minDivisor(2124679 ))
+        assertEquals(2124679, minDivisor(2124679))
         assertEquals(1073676287, minDivisor(1073676287))
         assertEquals(Int.MAX_VALUE, minDivisor(Int.MAX_VALUE))
     }
@@ -125,7 +125,7 @@ class Tests {
         assertEquals(17, maxDivisor(34))
         assertEquals(7, maxDivisor(49))
         assertEquals(509, maxDivisor(8653))
-        assertEquals(1 , maxDivisor(2124679 ))
+        assertEquals(1, maxDivisor(2124679))
         assertEquals(1, maxDivisor(1073676287))
         assertEquals(1, maxDivisor(Int.MAX_VALUE))
     }
@@ -177,7 +177,9 @@ class Tests {
         assertEquals(1.0, sin(PI / 2.0, 1e-5), 1e-5)
         assertEquals(0.0, sin(PI, 1e-5), 1e-5)
         assertEquals(-1.0, sin(3.0 * PI / 2.0, 1e-5), 1e-5)
+        assertEquals(0.0, sin(5 * PI, 1e-5), 1e-5)
         assertEquals(0.0, sin(100 * PI, 1e-5), 1e-5)
+
     }
 
     @Test
@@ -188,6 +190,7 @@ class Tests {
         assertEquals(-1.0, cos(PI, 1e-5), 1e-5)
         assertEquals(0.0, cos(3.0 * PI / 2.0, 1e-5), 1e-5)
         assertEquals(1.0, cos(100 * PI, 1e-5), 1e-5)
+       // assertEquals(1.0, cos(1000000000 * PI, 1e-5), 1e-5)
     }
 
     @Test
