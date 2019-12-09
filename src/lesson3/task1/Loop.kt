@@ -403,35 +403,51 @@ fun hasDifferentDigits(n: Int): Boolean {
  * Сложная
  *
  * Найти n-ю цифру последовательности из квадратов целых чисел:
- * 149162536496481100121144...
+ * 149162536496481100121144169...
  * Например, 2-я цифра равна 4, 7-я 5, 12-я 6.
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun squareSequenceDigit(n: Int): Int {
-    var x = 1
-    var square: Int
-    var square2: Int
-    var number = x
+    var number = 1
+    var sqrNumber: Int
+    var sqrNumberCopy: Int
     var count = 0
-    var myNumber = 0
+    var z = 0
+    var finalNumber = 0
+
+    // Ищем квадрат, чьи номера цифр попадают в n
     while (count < n) {
-        square = sqr(x)
-        square2 = square
-        x++
-        println("Current number $square")
-        while (square2 > 0) {
-            square2 /= 10
+        sqrNumber = sqr(number)
+        sqrNumberCopy = sqrNumber
+        number++
+        z = sqrNumber
+
+        //Считаем номера чисел
+        while (sqrNumberCopy > 0) {
+            sqrNumberCopy /= 10
             count++
-            myNumber = square % 10
-            myNumber
-            println("Count is $count")
-            println("MY Current number $myNumber")
         }
     }
-    return myNumber
-}
 
+    // Определяем искомое число
+    while (count >= n) {
+        finalNumber = z % 10
+        count--
+        z /= 10
+
+    }
+    return finalNumber
+}
+//while (square3 > 0){
+//    var x1 = (square3 % 10)
+//    x1 *= (10.0.pow(p-1)).toInt()
+//    p++
+//    sum += x1
+//    square2 = sum
+//    println("ЭТО СУММА В ПЕРЕВОРАЧИВАЛКЕ $square2")
+//    square3 /= 10
+//}
 /**
  * Сложная
  *
