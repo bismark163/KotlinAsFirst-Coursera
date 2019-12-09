@@ -275,7 +275,29 @@ fun cos(x: Double, eps: Double): Double {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+    var number = n
+    var number2 = n
+    var count = 0
+    var s = 0
+    var division: Int
+    var stepen: Double
+    while (number > 0) {
+        number /= 10
+        count++
+    }
+    while (number2 > 0) {
+        division = number2 % 10
+        stepen = (10.0).pow(count - 1)
+        division *= stepen.toInt()
+        s += division
+        count--
+        number2 /= 10
+    }
+    return s
+
+}
+
 
 /**
  * Средняя
