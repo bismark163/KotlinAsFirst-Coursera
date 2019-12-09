@@ -2,7 +2,6 @@
 
 package lesson3.task1
 
-import lesson1.task1.sqr
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.pow
@@ -279,7 +278,7 @@ fun revert(n: Int): Int {
     var number = n
     var number2 = n
     var count = 0
-    var s = 0
+    var sum = 0
     var division: Int
     var stepen: Double
     while (number > 0) {
@@ -290,11 +289,11 @@ fun revert(n: Int): Int {
         division = number2 % 10
         stepen = (10.0).pow(count - 1)
         division *= stepen.toInt()
-        s += division
+        sum += division
         count--
         number2 /= 10
     }
-    return s
+    return sum
 
 }
 
@@ -308,7 +307,40 @@ fun revert(n: Int): Int {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean {
+    //val a = n.equals(revert(n))
+    //return a
+    var number = n
+    var copyNumber = n
+    var count = 0
+    var palindrome: Boolean
+    while (number > 0) {
+        number /= 10
+        count++
+    }
+
+    var firstPart: Int
+    var secondPart: Int
+    var halfCount = count / 2
+
+    if (count % 2 == 0) {
+        var a = copyNumber / 10.0.pow(count / 2)
+        var b = copyNumber % 10.0.pow(count / 2)
+        firstPart = a.toInt()
+        secondPart = b.toInt()
+        var stepen = 1
+        while (halfCount > 0) {
+            var s = firstPart / 10.0.pow((count / 2) - 1)
+            var b = secondPart % 10.0.pow(stepen)
+            count--
+            stepen++
+            palindrome = s.equals(b)
+            return palindrome
+        }
+
+    }
+    return true
+}
 
 /**
  * Средняя
@@ -318,7 +350,52 @@ fun isPalindrome(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean {
+    var withDifDigits: Boolean = true
+    var number = n
+    var copyNumber = n
+    var count = 0
+    var b: Int
+    var secondCount = 1
+    while (number > 0) {
+        number /= 10
+        count++
+    }
+
+    if (count == 1 || n == 0) {
+        println("COUNT is only one")
+        withDifDigits = false
+    } else {
+        println("Now count is equal $count")
+        var firstDigit = copyNumber / (10.0.pow(count - 1)).toInt()
+        println("Now firstDigit is equal $firstDigit")
+        var anotherPart = (copyNumber % 10.0.pow(count - 1)).toInt()
+        while (secondCount <= count - 1) {
+            println("Before WHILE starts anotherPart is equal $anotherPart")
+
+            b = anotherPart % 10
+            println("INSIDE WHILE b is equal $b")
+
+            anotherPart /= 10
+            println("INSIDE WHILE anotherPart is equal $anotherPart")
+            secondCount++
+
+            if ((firstDigit.equals(b))) {
+                println("$firstDigit is equal $b")
+                withDifDigits = false
+                continue
+            } else {
+                println("$firstDigit is NOT equal $b")
+                withDifDigits = true
+                break
+            }
+        }
+    }
+
+    println("Main withDifDigits is equal $withDifDigits ")
+    return withDifDigits
+}
+
 
 /**
  * Сложная
